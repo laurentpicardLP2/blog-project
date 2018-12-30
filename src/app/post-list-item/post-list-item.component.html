@@ -1,0 +1,42 @@
+<style>
+  .label.badge-pill {
+border-radius:1em;
+margin:0 0.25em;
+}
+</style>
+<li [ngClass]="{'list-group-item': true,
+                'list-group-item-success': loveIts > 0,
+                'list-group-item-danger': loveIts < 0}">
+  <div class="row">
+    <div class="col-sm-7">
+      <h3 style="display: inline;">{{ title }} -</h3>
+      <span [ngClass]="{'label': true,
+                        'badge-pill': true,
+                        'label-success': loveIts > 0,
+                        'label-default': loveIts == 0,
+                        'label-danger': loveIts < 0}">{{ loveIts }}</span>
+    </div>
+    <div class="col-sm-5" style="text-align:right;">
+      <small>{{ created_at | date: 'd EEEE MMMM y' | uppercase }}</small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <p>{{ content }}</p>
+    </div>
+  </div>
+	<div class="row mt-3"> 
+    <div class="col-sm-2">
+      <button class="btn btn-success"
+      (click)="onLoveIts(1, id)">Love it!</button>
+    </div>
+    <div class="col-sm-2">
+      <button class="btn btn-danger"
+      (click)="onLoveIts(-1, id)">Don't love it!</button>
+    </div>
+    <div class="col-sm-8" style="text-align:right;">
+        <button class="btn btn-danger"
+        (click)="onRemovePost(id);">Supprimer post</button>
+      </div>
+  </div>
+</li>
