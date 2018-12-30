@@ -34,7 +34,8 @@ export class NewPostComponent implements OnInit {
     
     newPost.id = (this.postsService.posts.length) ? this.postsService.posts[this.postsService.posts.length - 1].id + 1 : 1;
     newPost.loveIts = 0;
-    newPost.created_at = new Date().toString();
+    const newDate = new Date().toString();
+    newPost.created_at = newDate;
     this.postsService.createNewPost(newPost);
     this.router.navigate(['/posts']);
   }
